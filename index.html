@@ -11,9 +11,17 @@
 <h2>Dynamic</h2>
 <div id="target"></div>
 <div style="margin-top: 15px;">
-  <button id="addVideo" onclick="addVideo()">Add video element</button>
-  <button id="addSourceElement" onclick="addSourceElement()" disabled>Add source element</button>
-  <button id="addSrcAttribute" onclick="addSrcAttribute()" disabled>Add src attribute</button>
+  <div>
+    <button id="addVideo" onclick="addVideo()">Add video element</button>
+    <button id="addSourceElement" onclick="addSourceElement()" disabled>Add source element</button>
+    <button id="addSrcAttribute" onclick="addSrcAttribute()" disabled>Add src attribute</button>
+  </div>
+  <div>
+    <button id="addVideoWithSrcAttribute" onclick="addVideoWithSrcAttribute()">Add video element with src attribute</button>
+  </div>
+  <div>
+    <button id="addVideoWithSourceElement" onclick="addVideoWithSourceElement()">Add video element with source element</button>
+  </div>
 </div>
 <script>
   const addVideo = () => {
@@ -35,6 +43,27 @@
   const addSrcAttribute = () => {
     document.getElementById('addSrcAttribute').disabled = true;
     document.getElementById('dynamicVideo').src = "rabbit320DynSrc.mp4";
+  }
+
+  const addVideoWithSrcAttribute = () => {
+    document.getElementById('addVideoWithSrcAttribute').disabled = true;
+    const video = document.createElement('video');
+    video.id = 'dynamicVideoAddVideoWithSrcAttribute'
+    video.controls = true;
+    video.src = 'rabbit320DynAddDirectSrc.mp4';
+    document.getElementById('target').appendChild(video);
+  }
+
+  const addVideoWithSourceElement = () => {
+    document.getElementById('addVideoWithSourceElement').disabled = true;
+    const video = document.createElement('video');
+    video.id = 'dynamicVideoAddVideoWithSourceElement'
+    video.controls = true;
+    const source = document.createElement('source');
+    source.src = "rabbit320DynAddDirectSource.mp4";
+    source.type = "video/mp4";
+    video.appendChild(source);
+    document.getElementById('target').appendChild(video);
   }
 </script>
 </body>
