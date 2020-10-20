@@ -1,2 +1,2 @@
 Testpage is reachable: 
-https://plussubtestpage.netlify.app/
+https://plussub-test-page.netlify.app/
