@@ -1,12 +1,36 @@
-<html>
+<html lang="en">
 <body>
-<h2>Video with src <h2>
-todo
-<h2>Video without src but with source <h2>
-todo
-<h2>Dynamic<h2>
-<button>add video element </button>
-<button>add source element </button>
-<button>add src attribute </button>
+<h2>Video with src</h2>
+<video controls src="rabbit320Src.mp4"></video>
+<h2>Video without src attribute but with source element</h2>
+<video controls>
+  <source src="rabbit320.mp4" type="video/mp4">
+  <source src="rabbit320.webm" type="video/webm">
+  <p>Your browser doesn't support HTML5 video. Here is a <a href="rabbit320.mp4">link to the video</a> instead.</p>
+</video>
+<h2>Dynamic</h2>
+<div id="target"></div>
+<div style="margin-top: 15px;">
+  <button onclick="addVideo()">Add video element</button>
+  <button onclick="addSourceElement()">Add source element</button>
+  <button onclick="addSrcAttribute()">Add src attribute</button>
+</div>
+<script>
+  const addVideo = () => {
+    const video = document.createElement('video');
+    video.id = 'dynamicVideo'
+    video.controls = true;
+    document.getElementById('target').appendChild(video);
+  }
+  const addSourceElement = () => {
+    const source = document.createElement('source');
+    source.src = "rabbit320DynSource.mp4";
+    source.type = "video/mp4";
+    document.getElementById('dynamicVideo').appendChild(source);
+  }
+  const addSrcAttribute = () => {
+    document.getElementById('dynamicVideo').src = "rabbit320DynSrc.mp4";
+  }
+</script>
 </body>
 </html>
