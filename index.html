@@ -11,24 +11,29 @@
 <h2>Dynamic</h2>
 <div id="target"></div>
 <div style="margin-top: 15px;">
-  <button onclick="addVideo()">Add video element</button>
-  <button onclick="addSourceElement()">Add source element</button>
-  <button onclick="addSrcAttribute()">Add src attribute</button>
+  <button id="addVideo" onclick="addVideo()">Add video element</button>
+  <button id="addSourceElement" onclick="addSourceElement()" disabled>Add source element</button>
+  <button id="addSrcAttribute" onclick="addSrcAttribute()" disabled>Add src attribute</button>
 </div>
 <script>
   const addVideo = () => {
+    document.getElementById('addVideo').disabled = true;
     const video = document.createElement('video');
     video.id = 'dynamicVideo'
     video.controls = true;
     document.getElementById('target').appendChild(video);
+    document.getElementById('addSourceElement').disabled = false;
+    document.getElementById('addSrcAttribute').disabled = false;
   }
   const addSourceElement = () => {
+    document.getElementById('addSourceElement').disabled = true;
     const source = document.createElement('source');
     source.src = "rabbit320DynSource.mp4";
     source.type = "video/mp4";
     document.getElementById('dynamicVideo').appendChild(source);
   }
   const addSrcAttribute = () => {
+    document.getElementById('addSrcAttribute').disabled = true;
     document.getElementById('dynamicVideo').src = "rabbit320DynSrc.mp4";
   }
 </script>
