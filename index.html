@@ -2,27 +2,30 @@
 <body>
 <h2>Video with src</h2>
 <video id="v1" controls src="rabbit320Src.mp4"></video>
-<button onclick="removeV1()">remove</button>
+<button onclick="removeV1('v1')">remove</button>
 <h2>Video without src attribute but with source element</h2>
 <video id="v2" controls>
   <source src="rabbit320.mp4" type="video/mp4">
   <source src="rabbit320.webm" type="video/webm">
   <p>Your browser doesn't support HTML5 video. Here is a <a href="rabbit320.mp4">link to the video</a> instead.</p>
 </video>
-<button onclick="removeV2()">remove</button>
+<button onclick="removeV2('v2')">remove</button>
 <h2>Dynamic</h2>
 <div id="target"></div>
-<div style="margin-top: 15px;">
+<div style="margin-top: 15px; display: flex; flex-direction: column; gap: 20px;">
   <div>
     <button id="addVideo" onclick="addVideo()">Add video element</button>
     <button id="addSourceElement" onclick="addSourceElement()" disabled>Add source element</button>
     <button id="addSrcAttribute" onclick="addSrcAttribute()" disabled>Add src attribute</button>
+    <button id="remove" onclick="removeAddVideo()" disabled>Remove</button>
   </div>
   <div>
     <button id="addVideoWithSrcAttribute" onclick="addVideoWithSrcAttribute()">Add video element with src attribute</button>
+    <button id="removeVideoWithSrcAttribute" onclick="removeVideoWithSrcAttribute()" disabled>Remove</button>
   </div>
   <div>
     <button id="addVideoWithSourceElement" onclick="addVideoWithSourceElement()">Add video element with source element</button>
+    <button id="removeVideoWithSourceElement" onclick="removeVideoWithSourceElement()" disabled>Remove</button>
   </div>
 </div>
 <script>
@@ -34,7 +37,16 @@
     document.getElementById('target').appendChild(video);
     document.getElementById('addSourceElement').disabled = false;
     document.getElementById('addSrcAttribute').disabled = false;
+    document.getElementById('remove').disabled = false;
   }
+  const removeAddVideo = () => {
+    document.getElementById('addVideo').disabled = false;
+    remove('dynamicVideo');
+    document.getElementById('addSourceElement').disabled = true;
+    document.getElementById('addSrcAttribute').disabled = true;
+    document.getElementById('remove').disabled = true;
+  }
+
   const addSourceElement = () => {
     document.getElementById('addSourceElement').disabled = true;
     const source = document.createElement('source');
@@ -54,6 +66,12 @@
     video.controls = true;
     video.src = 'rabbit320DynAddDirectSrc.mp4';
     document.getElementById('target').appendChild(video);
+    document.getElementById('removeVideoWithSrcAttribute').disabled = false;
+  }
+  const removeVideoWithSrcAttribute = () => {
+    document.getElementById('addVideoWithSrcAttribute').disabled = false;
+    remove('dynamicVideoAddVideoWithSrcAttribute');
+    document.getElementById('removeVideoWithSrcAttribute').disabled = true;
   }
 
   const addVideoWithSourceElement = () => {
@@ -66,10 +84,16 @@
     source.type = "video/mp4";
     video.appendChild(source);
     document.getElementById('target').appendChild(video);
+    document.getElementById('removeVideoWithSourceElement').disabled = false;
   }
 
-  const removeV1 = () => document.getElementById('v1').remove()
-  const removeV2 = () => document.getElementById('v2').remove()
+  const removeVideoWithSourceElement = () => {
+    document.getElementById('addVideoWithSourceElement').disabled = false;
+    remove('dynamicVideoAddVideoWithSourceElement');
+    document.getElementById('removeVideoWithSourceElement').disabled = true;
+  }
+
+  const remove = (id) => document.getElementById(id).remove()
 </script>
 </body>
 </html>
