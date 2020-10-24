@@ -2,14 +2,14 @@
 <body>
 <h2>Video with src</h2>
 <video id="v1" controls src="rabbit320Src.mp4"></video>
-<button onclick="removeV1('v1')">remove</button>
+<button onclick="remove('v1')">remove</button>
 <h2>Video without src attribute but with source element</h2>
 <video id="v2" controls>
   <source src="rabbit320.mp4" type="video/mp4">
   <source src="rabbit320.webm" type="video/webm">
   <p>Your browser doesn't support HTML5 video. Here is a <a href="rabbit320.mp4">link to the video</a> instead.</p>
 </video>
-<button onclick="removeV2('v2')">remove</button>
+<button onclick="remove('v2')">remove</button>
 <h2>Dynamic</h2>
 <div id="target"></div>
 <div style="margin-top: 15px; display: flex; flex-direction: column; gap: 20px;">
