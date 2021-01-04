@@ -3,7 +3,7 @@
 <h2>Video with src</h2>
 <video id="v1" controls src="rabbit320Src.mp4"></video>
 <button onclick="remove('v1')">remove</button>
-<button onclick="swap">swap</button>
+<button onclick="swap()">swap</button>
 <h2>Video without src attribute but with source element</h2>
 <video id="v2" controls>
   <source src="rabbit320.mp4" type="video/mp4">
@@ -95,7 +95,7 @@
   }
 
   const remove = (id) => document.getElementById(id).remove();
-  const swap = () => document.getElementById('#v1').src === 'rabbit320Src.mp4' ? document.getElementById('#v1').src = 'rabbit320SrcSwap.mp4' : document.getElementById('#v1').src === 'rabbit320Src.mp4';
+  const swap = () => document.getElementById('v1').src = document.getElementById('v1').src.endsWith('rabbit320Src.mp4') ? 'rabbit320SrcSwap.mp4' : 'rabbit320Src.mp4';
 </script>
 </body>
 </html>
